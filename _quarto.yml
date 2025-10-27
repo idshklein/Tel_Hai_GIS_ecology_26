@@ -1,7 +1,7 @@
 project:
   title: "קורס GIS ואקולוגיה - תל חי"
   type: website
-  output-dir: .site
+  output-dir: docs
 
 website:
   title: "קורס GIS ואקולוגיה"
