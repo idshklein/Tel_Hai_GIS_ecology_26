@@ -1,0 +1,463 @@
+/* Hebrew RTL CSS Adaptation for Quarto */
+
+/* Base RTL Setup */
+html, body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Main content containers */
+.quarto-container,
+.content,
+.slide,
+.header,
+.odd,
+.page-columns,
+.column-body,
+.column-margin {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation and menus */
+.navbar,
+.navbar-nav,
+.nav-link,
+.sidebar-navigation,
+.sidebar-menu {
+    direction: rtl;
+    text-align: right;
+}
+
+.navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 1rem;
+}
+
+/* Lists */
+ul, ol {
+    padding-right: 40px;
+    padding-left: 0;
+}
+
+li {
+    text-align: right;
+}
+
+/* Code blocks and inline code */
+code {
+    direction: ltr; /* Keep code LTR for readability */
+    text-align: left;
+    unicode-bidi: embed;
+}
+
+pre code {
+    direction: ltr;
+    text-align: left;
+}
+
+.sourceCode {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Code block containers */
+.cell-output,
+.cell-code {
+    direction: rtl;
+    text-align: right;
+}
+
+.cell-output pre,
+.cell-code pre {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Tables */
+table {
+    direction: rtl;
+}
+
+th, td {
+    text-align: right;
+}
+
+/* Figures and captions */
+figure {
+    text-align: center;
+}
+
+figcaption,
+.figure-caption {
+    text-align: right;
+    direction: rtl;
+}
+
+.cap_ido {
+    font-size: 0.8em;
+    text-align: right;
+    direction: rtl;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Paragraphs */
+p {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Blockquotes */
+blockquote {
+    border-right: 4px solid #ddd;
+    border-left: none;
+    padding-right: 1rem;
+    padding-left: 0;
+    margin-right: 0;
+    text-align: right;
+    direction: rtl;
+}
+
+/* Callout boxes */
+.callout {
+    direction: rtl;
+    text-align: right;
+}
+
+.callout-header {
+    text-align: right;
+}
+
+.callout-body {
+    text-align: right;
+}
+
+/* Buttons and links */
+.btn {
+    text-align: center;
+}
+
+a {
+    direction: rtl;
+}
+
+/* Footnotes */
+.footnotes {
+    direction: rtl;
+    text-align: right;
+}
+
+.footnote-ref {
+    direction: ltr;
+}
+
+/* Page layout adjustments */
+.page-footer {
+    text-align: center;
+}
+
+/* Sidebar adjustments */
+.sidebar {
+    direction: rtl;
+    text-align: right;
+}
+
+.sidebar-item {
+    text-align: right;
+}
+
+/* Search box */
+.aa-Form {
+    direction: rtl;
+}
+
+.aa-Input {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Margin and padding adjustments for RTL */
+.margin-caption {
+    text-align: right;
+}
+
+.column-margin > * {
+    text-align: right;
+}
+
+/* Cross-references */
+.cross-ref {
+    direction: rtl;
+}
+
+/* Bibliography */
+.references {
+    direction: rtl;
+    text-align: right;
+}
+
+.references .hanging-indent {
+    padding-right: 1.5em;
+    padding-left: 0;
+}
+
+/* RevealJS presentation specific */
+.reveal {
+    direction: rtl;
+    font-family: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.reveal .slides {
+    direction: rtl;
+    text-align: right;
+}
+
+.reveal .slides section {
+    direction: rtl;
+    text-align: right;
+    padding: 20px;
+}
+
+.reveal .slides section > section {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RevealJS Headers in Hebrew */
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6 {
+    direction: rtl;
+    text-align: right;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.reveal h1 {
+    font-size: 2.5em;
+    color: #1f5582;
+}
+
+.reveal h2 {
+    font-size: 2em;
+    color: #2d6da3;
+}
+
+.reveal h3 {
+    font-size: 1.5em;
+    color: #3b7bb8;
+}
+
+/* RevealJS Lists */
+.reveal ul,
+.reveal ol {
+    padding-right: 1em;
+    padding-left: 0;
+    text-align: right;
+}
+
+.reveal li {
+    text-align: right;
+    margin-bottom: 0.5em;
+}
+
+/* RevealJS Tables */
+.reveal table {
+    direction: rtl;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.reveal table th,
+.reveal table td {
+    text-align: right;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+}
+
+.reveal table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+/* RevealJS Code blocks */
+.reveal pre {
+    direction: ltr;
+    text-align: left;
+    width: 100%;
+    margin: 1em auto;
+}
+
+.reveal code {
+    direction: ltr;
+    text-align: left;
+    font-family: "Courier New", monospace;
+}
+
+/* RevealJS Fragments */
+.reveal .fragment {
+    direction: rtl;
+    text-align: right;
+}
+
+/* RevealJS Progress bar */
+.reveal .progress {
+    color: #1f5582;
+}
+
+/* RevealJS Controls */
+.reveal .controls {
+    right: auto;
+    left: 12px;
+}
+
+/* RevealJS Slide numbers */
+.reveal .slide-number {
+    left: 8px;
+    right: auto;
+    direction: ltr;
+}
+
+/* RevealJS Menu */
+.reveal .slide-menu-button {
+    left: 30px;
+    right: auto;
+}
+
+/* RevealJS Footer */
+.reveal .footer {
+    direction: rtl;
+    text-align: right;
+    font-size: 0.8em;
+}
+
+/* RevealJS Chalkboard */
+.reveal .chalkboard-button {
+    left: 60px;
+    right: auto;
+}
+
+/* RevealJS Navigation hints */
+.reveal .navigate-up,
+.reveal .navigate-down,
+.reveal .navigate-left,
+.reveal .navigate-right {
+    border-left-color: transparent !important;
+    border-right-color: #1f5582 !important;
+}
+
+/* RevealJS Callouts in presentations */
+.reveal .callout {
+    direction: rtl;
+    text-align: right;
+    border-right: 4px solid #17a2b8;
+    border-left: none;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #f8f9fa;
+}
+
+.reveal .callout-note {
+    border-right-color: #007bff;
+}
+
+.reveal .callout-tip {
+    border-right-color: #28a745;
+}
+
+.reveal .callout-warning {
+    border-right-color: #ffc107;
+}
+
+.reveal .callout-important {
+    border-right-color: #dc3545;
+}
+
+/* RevealJS Navigation Buttons */
+.reveal .reveal-only {
+    direction: rtl;
+}
+
+.reveal .reveal-only .btn {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.reveal .reveal-only .btn-outline-light {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    background-color: rgba(0,0,0,0.3);
+}
+
+.reveal .reveal-only .btn-outline-light:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.reveal .reveal-only .btn-outline-secondary {
+    color: #6c757d;
+    border: 1px solid #6c757d;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.reveal .reveal-only .btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+}
+
+.reveal .reveal-only .btn-success {
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+}
+
+/* Math equations - keep LTR */
+.math,
+.MathJax,
+.katex {
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: embed;
+}
+
+/* Inline math in RTL context */
+.math.inline {
+    display: inline;
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+/* Special handling for mixed content */
+.mixed-content {
+    direction: rtl;
+    text-align: right;
+}
+
+.mixed-content code,
+.mixed-content .math {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: right;
+    }
+    
+    .sidebar {
+        text-align: right;
+    }
+}

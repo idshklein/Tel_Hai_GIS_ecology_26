@@ -1,0 +1,67 @@
+project:
+  title: "קורס GIS ואקולוגיה - תל חי"
+  type: website
+  output-dir: .site
+
+website:
+  title: "קורס GIS ואקולוגיה"
+  navbar:
+    title: "GIS ואקולוגיה"
+    left:
+      - href: index.qmd
+        text: "דף הבית"
+      - href: class1.qmd
+        text: "שיעור 1"
+  sidebar:
+    title: "תכנית הלימודים"
+    style: "floating"
+    contents:
+      - index.qmd
+      - section: "שיעורים"
+        contents:
+          - class1.qmd
+
+format:
+  html:
+    css: style.css
+    dir: rtl
+    theme: default
+    toc: true
+    toc-location: right
+    number-sections: true
+    html-math-method: katex
+    
+  revealjs:
+    css: style.css
+    dir: rtl
+    theme: default
+    # Presentation controls
+    slide-number: true
+    show-slide-number: all
+    hash-type: number
+    controls: true
+    controls-layout: bottom-right
+    navigation-mode: vertical
+    progress: true
+    touch: true
+    loop: false
+
+    # Visual / transitions
+    transition: slide
+    background-transition: fade
+    view-distance: 3
+    mobile-view-distance: 2
+
+    # Chalkboard plugin defaults
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 3
+      chalkboard-width: 5
+
+    # Accessibility/packaging
+    rtl: true
+    embed-resources: false
+
+    # Disable RevealJS menu/TOC by default (per-document can override)
+    menu: false
+    toc: false
