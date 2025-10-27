@@ -314,11 +314,11 @@
     ]
   },
   {
-    "objectID": "class1.html#תוכנה-מרכזית-לשימוש-בקורס---qgis",
-    "href": "class1.html#תוכנה-מרכזית-לשימוש-בקורס---qgis",
+    "objectID": "class1.html#תוכנה-מרכזית-לשימוש-בקורס---qgis--מה-זה",
+    "href": "class1.html#תוכנה-מרכזית-לשימוש-בקורס---qgis--מה-זה",
     "title": "שיעור 1: מערכות מידע גאוגרפי",
-    "section": "17 תוכנה מרכזית לשימוש בקורס - qgis",
-    "text": "17 תוכנה מרכזית לשימוש בקורס - qgis\n\n17.1 מה זה qgis?\nqgis, קיצור ל quantum GIS, היא תוכנת GIS חינמית בקוד פתוח. ככזאת היא מאפשרת למשתמשים ולמפתחים להנות מיכולות GIS הנבנות ברמה הקהילתית, באיכות דומה ואפילו עדיפה על תוכנות GIS קנייניות.\n\n\n\n\n\nhttps://scontent.ftlv20-2.fna.fbcdn.net/v/t39.30808-6/309666009_598734615384362_6905740515008147141_n.png?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=F6SY2WJdOkAAX8k-jPm&_nc_ht=scontent.ftlv20-2.fna&oh=00_AfDFGOrceqT23UpLxIHbHVPx2nR8ORk_IECtSN_ESg-8GQ&oe=65A9D22F\n\n\n\n\n\n\nhttps://www.qgis.org/en/_static/images/about-screenshot.png\n\n\n\n\n\n\n\n17.2 למה qgis?\n\n\nמכילה את כל מה שצריך עבור ניתוח גאוגרפי בסיסי\n\n\n\n\nחינמית\n\n\n\n\nידידותית למשתמש\n\n\n\n\nבעלת קהילת משתמשים גדולה\n\n\n\n\n\n17.3 האם יש עוד תוכנות?\nכן. חלק נרחב מהתעשייה משתמש בתוכנת arcgis, שהיא תוכנה קניינית מבית ESRI. בקורס זה לא נשתמש בתוכנה זו (על אף שניאלץ לעשות שימוש בקבצים שיוצרו על ידי תאגיד ESRI, קבצי SHP וגרוריתהם).",
+    "section": "17 תוכנה מרכזית לשימוש בקורס - qgis- מה זה?",
+    "text": "17 תוכנה מרכזית לשימוש בקורס - qgis- מה זה?\nqgis, קיצור ל quantum GIS, היא תוכנת GIS חינמית בקוד פתוח. ככזאת היא מאפשרת למשתמשים ולמפתחים להנות מיכולות GIS הנבנות ברמה הקהילתית, באיכות דומה ואפילו עדיפה על תוכנות GIS קנייניות.\n\n\n\n\n\nhttps://scontent.ftlv20-2.fna.fbcdn.net/v/t39.30808-6/309666009_598734615384362_6905740515008147141_n.png?_nc_cat=103&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=F6SY2WJdOkAAX8k-jPm&_nc_ht=scontent.ftlv20-2.fna&oh=00_AfDFGOrceqT23UpLxIHbHVPx2nR8ORk_IECtSN_ESg-8GQ&oe=65A9D22F\n\n\n\n\n\n\nhttps://www.qgis.org/en/_static/images/about-screenshot.png\n\n\n\n\n\n\n17.1 למה qgis?\n\n\nמכילה את כל מה שצריך עבור ניתוח גאוגרפי בסיסי\n\n\n\n\nחינמית\n\n\n\n\nידידותית למשתמש\n\n\n\n\nבעלת קהילת משתמשים גדולה\n\n\n\n\n\n17.2 האם יש עוד תוכנות?\nכן. חלק נרחב מהתעשייה משתמש בתוכנת arcgis, שהיא תוכנה קניינית מבית ESRI. בקורס זה לא נשתמש בתוכנה זו (על אף שניאלץ לעשות שימוש בקבצים שיוצרו על ידי תאגיד ESRI, קבצי SHP וגרוריתהם).",
     "crumbs": [
       "דף הבית",
       "שיעורים",
