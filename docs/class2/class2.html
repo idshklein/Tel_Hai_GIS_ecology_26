@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="rtl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.537">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="ד”ר עדו קליין">
+<meta name="dcterms.date" content="2024-11-03">
+
+<title>קורס GIS ואקולוגיה - שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-qgis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">GIS ואקולוגיה</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">דף הבית</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../class1.html"> 
+<span class="menu-text">שיעור 1</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../class2/class2.html"> 
+<span class="menu-text">שיעור 2</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class2/class2.html">שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-qgis</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">קורס GIS ואקולוגיה - תל חי</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">שיעורים</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">שיעור 1: מערכות מידע גאוגרפי</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../class2/class2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-qgis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#תזכורת-לשיעור-הקודם" id="toc-תזכורת-לשיעור-הקודם" class="nav-link active" data-scroll-target="#תזכורת-לשיעור-הקודם"><span class="header-section-number">1</span> תזכורת לשיעור הקודם</a></li>
+  <li><a href="#מהו-מידע-וקטורי" id="toc-מהו-מידע-וקטורי" class="nav-link" data-scroll-target="#מהו-מידע-וקטורי"><span class="header-section-number">2</span> מהו מידע וקטורי?</a></li>
+  <li><a href="#כזכור-עקב-בצד-אגודל" id="toc-כזכור-עקב-בצד-אגודל" class="nav-link" data-scroll-target="#כזכור-עקב-בצד-אגודל"><span class="header-section-number">3</span> כזכור, עקב בצד אגודל…</a></li>
+  <li><a href="#איך-הרשימה-מסומנת-במרחב" id="toc-איך-הרשימה-מסומנת-במרחב" class="nav-link" data-scroll-target="#איך-הרשימה-מסומנת-במרחב"><span class="header-section-number">4</span> איך הרשימה מסומנת במרחב?</a></li>
+  <li><a href="#איך-מסמנים-דברים-במרחב" id="toc-איך-מסמנים-דברים-במרחב" class="nav-link" data-scroll-target="#איך-מסמנים-דברים-במרחב"><span class="header-section-number">5</span> איך מסמנים דברים במרחב?</a></li>
+  <li><a href="#איך-המספרים-מסומנים-במרחב" id="toc-איך-המספרים-מסומנים-במרחב" class="nav-link" data-scroll-target="#איך-המספרים-מסומנים-במרחב"><span class="header-section-number">6</span> איך המספרים מסומנים במרחב?</a></li>
+  <li><a href="#זה-יכול-להיות-גם-קצת-מסובך-יותר" id="toc-זה-יכול-להיות-גם-קצת-מסובך-יותר" class="nav-link" data-scroll-target="#זה-יכול-להיות-גם-קצת-מסובך-יותר"><span class="header-section-number">7</span> זה יכול להיות גם (קצת) מסובך יותר</a></li>
+  <li><a href="#למה-סיבכנו" id="toc-למה-סיבכנו" class="nav-link" data-scroll-target="#למה-סיבכנו"><span class="header-section-number">8</span> למה סיבכנו?</a></li>
+  <li><a href="#רגע-זה-טוב-רק-לנקודות-מה-עם-קווים" id="toc-רגע-זה-טוב-רק-לנקודות-מה-עם-קווים" class="nav-link" data-scroll-target="#רגע-זה-טוב-רק-לנקודות-מה-עם-קווים"><span class="header-section-number">9</span> רגע, זה טוב רק לנקודות, מה עם קווים?</a></li>
+  <li><a href="#ובייצוג-פשוט-יותר" id="toc-ובייצוג-פשוט-יותר" class="nav-link" data-scroll-target="#ובייצוג-פשוט-יותר"><span class="header-section-number">10</span> ובייצוג פשוט יותר</a></li>
+  <li><a href="#אוקיי-יש-נקודות-יש-קווים-מה-עם-מצולעים" id="toc-אוקיי-יש-נקודות-יש-קווים-מה-עם-מצולעים" class="nav-link" data-scroll-target="#אוקיי-יש-נקודות-יש-קווים-מה-עם-מצולעים"><span class="header-section-number">11</span> אוקיי, יש נקודות, יש קווים, מה עם מצולעים?</a></li>
+  <li><a href="#למעשה-הייצוג-שלה-זהה-לזה-של-קו-למעט" id="toc-למעשה-הייצוג-שלה-זהה-לזה-של-קו-למעט" class="nav-link" data-scroll-target="#למעשה-הייצוג-שלה-זהה-לזה-של-קו-למעט"><span class="header-section-number">12</span> למעשה, הייצוג שלה זהה לזה של קו, למעט…</a></li>
+  <li><a href="#נניח-יש-לי-תופעה-שמיוצגת-בכמה-מקומות-למשל" id="toc-נניח-יש-לי-תופעה-שמיוצגת-בכמה-מקומות-למשל" class="nav-link" data-scroll-target="#נניח-יש-לי-תופעה-שמיוצגת-בכמה-מקומות-למשל"><span class="header-section-number">13</span> נניח יש לי תופעה שמיוצגת בכמה מקומות, למשל:</a></li>
+  <li><a href="#אפשר-לכלול-כמה-ישויות-שרוצים-בתוך-הרשימה-שדיברנו-עליה" id="toc-אפשר-לכלול-כמה-ישויות-שרוצים-בתוך-הרשימה-שדיברנו-עליה" class="nav-link" data-scroll-target="#אפשר-לכלול-כמה-ישויות-שרוצים-בתוך-הרשימה-שדיברנו-עליה"><span class="header-section-number">14</span> אפשר לכלול כמה ישויות שרוצים בתוך הרשימה שדיברנו עליה</a></li>
+  <li><a href="#שימו-לב" id="toc-שימו-לב" class="nav-link" data-scroll-target="#שימו-לב"><span class="header-section-number">15</span> שימו לב!</a></li>
+  <li><a href="#המחשה-נוספת" id="toc-המחשה-נוספת" class="nav-link" data-scroll-target="#המחשה-נוספת"><span class="header-section-number">16</span> המחשה נוספת</a></li>
+  <li><a href="#הפסקה-מתודית" id="toc-הפסקה-מתודית" class="nav-link" data-scroll-target="#הפסקה-מתודית"><span class="header-section-number">17</span> הפסקה מתודית</a></li>
+  <li><a href="#עבודה-בסיסית-עם-תוכנת-qgis" id="toc-עבודה-בסיסית-עם-תוכנת-qgis" class="nav-link" data-scroll-target="#עבודה-בסיסית-עם-תוכנת-qgis"><span class="header-section-number">18</span> עבודה בסיסית עם תוכנת qgis</a></li>
+  <li><a href="#טעינת-שכבות" id="toc-טעינת-שכבות" class="nav-link" data-scroll-target="#טעינת-שכבות"><span class="header-section-number">19</span> טעינת שכבות</a></li>
+  <li><a href="#איך-נטען-שכבה" id="toc-איך-נטען-שכבה" class="nav-link" data-scroll-target="#איך-נטען-שכבה"><span class="header-section-number">20</span> איך נטען שכבה?</a></li>
+  <li><a href="#שכבת-בסיס" id="toc-שכבת-בסיס" class="nav-link" data-scroll-target="#שכבת-בסיס"><span class="header-section-number">21</span> שכבת בסיס</a></li>
+  <li><a href="#סרגל-הניווט" id="toc-סרגל-הניווט" class="nav-link" data-scroll-target="#סרגל-הניווט"><span class="header-section-number">22</span> סרגל הניווט</a></li>
+  <li><a href="#פאנל-השכבות" id="toc-פאנל-השכבות" class="nav-link" data-scroll-target="#פאנל-השכבות"><span class="header-section-number">23</span> פאנל השכבות</a></li>
+  <li><a href="#פאנל-הסיור" id="toc-פאנל-הסיור" class="nav-link" data-scroll-target="#פאנל-הסיור"><span class="header-section-number">24</span> פאנל הסיור</a></li>
+  <li><a href="#סרגל-המאפיינים" id="toc-סרגל-המאפיינים" class="nav-link" data-scroll-target="#סרגל-המאפיינים"><span class="header-section-number">25</span> סרגל המאפיינים</a></li>
+  <li><a href="#סרגל-הפרויקט" id="toc-סרגל-הפרויקט" class="nav-link" data-scroll-target="#סרגל-הפרויקט"><span class="header-section-number">26</span> סרגל הפרויקט</a></li>
+  <li><a href="#מהו-פרויקט" id="toc-מהו-פרויקט" class="nav-link" data-scroll-target="#מהו-פרויקט"><span class="header-section-number">27</span> מהו פרויקט?</a></li>
+  <li><a href="#הדגמה-של-שמירת-פרויקט" id="toc-הדגמה-של-שמירת-פרויקט" class="nav-link" data-scroll-target="#הדגמה-של-שמירת-פרויקט"><span class="header-section-number">28</span> הדגמה של שמירת פרויקט</a></li>
+  <li><a href="#תרגיל-2" id="toc-תרגיל-2" class="nav-link" data-scroll-target="#תרגיל-2"><span class="header-section-number">29</span> תרגיל 2</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class2/class2.html">שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-qgis</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-qgis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ד”ר עדו קליין </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 3, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="23" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 22;"><span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<section id="תזכורת-לשיעור-הקודם" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="תזכורת-לשיעור-הקודם"><span class="header-section-number">1</span> תזכורת לשיעור הקודם</h2>
+<p>חילקנו בין שני סוגים של מידע מרחבי:</p>
+<ul>
+<li><div class="fragment">
+<p>מידע וקטורי</p>
+</div></li>
+<li><div class="fragment">
+<p>מידע רסטרי</p>
+</div></li>
+</ul>
+<div class="fragment">
+<p>מרבית הקורס יסוב סביב מידע וקטורי.</p>
+</div>
+</section>
+<section id="מהו-מידע-וקטורי" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="מהו-מידע-וקטורי"><span class="header-section-number">2</span> מהו מידע וקטורי?</h2>
+<p>כהרגלנו, ננסה לפרק את המושג לחתיכות:</p>
+<div class="fragment">
+<p>מידע - דנו עליו בשיעור הקודם.</p>
+</div>
+<div class="fragment">
+<p>וקטור - מה זה?</p>
+</div>
+<div class="fragment">
+<p>וקטור הוא שם שונה למערך. מערך הוא מבנה נתונים - אוסף נתונים שניתן לגשת אליו באמצעות אינדקס, מצביע.</p>
+</div>
+</section>
+<section id="כזכור-עקב-בצד-אגודל" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="כזכור-עקב-בצד-אגודל"><span class="header-section-number">3</span> כזכור, עקב בצד אגודל…</h2>
+<p>מה זה אומר?</p>
+<div class="fragment">
+<p>נניח יש רשימה של מספרים:</p>
+</div>
+<div class="fragment">
+<p>[6,1,2,3,4,7]</p>
+</div>
+<div class="fragment">
+<p>מה המשמעות של האיבר הNי ברשימה?</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון ברשימה הוא 6.</p>
+</div>
+<div class="fragment">
+<p>האיבר השני ברשימה הוא 1.</p>
+</div>
+<div class="fragment">
+<p>וכן הלאה.</p>
+</div>
+</section>
+<section id="איך-הרשימה-מסומנת-במרחב" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="איך-הרשימה-מסומנת-במרחב"><span class="header-section-number">4</span> איך הרשימה מסומנת במרחב?</h2>
+<p>איך <strong>מה</strong> מסומן <strong>איפה</strong>?</p>
+</section>
+<section id="איך-מסמנים-דברים-במרחב" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="איך-מסמנים-דברים-במרחב"><span class="header-section-number">5</span> איך מסמנים דברים במרחב?</h2>
+<div class="fragment">
+<p>צריך מערכת צירים.</p>
+</div>
+<div class="fragment">
+<p>איך נראה ציר מספרים? ככה:</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="איך-המספרים-מסומנים-במרחב" class="level2 smaller" data-number="6">
+<h2 class="smaller anchored" data-number="6" data-anchor-id="איך-המספרים-מסומנים-במרחב"><span class="header-section-number">6</span> איך המספרים מסומנים במרחב?</h2>
+<div class="fragment">
+<p>איך היינו מסמנים את הרשימה במרחב חד מימדי? [6,1,2,3,4,7]</p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="זה-יכול-להיות-גם-קצת-מסובך-יותר" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="זה-יכול-להיות-גם-קצת-מסובך-יותר"><span class="header-section-number">7</span> זה יכול להיות גם (קצת) מסובך יותר</h2>
+<div class="fragment">
+<p>נניח יש לי רשימה בתוך רשימה:</p>
+</div>
+<div class="fragment">
+<p>[[1,2],[3,4],[5,6]]</p>
+</div>
+<div class="fragment">
+<p>מהו האיבר הNי ברשימה?</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון ברשימה הוא [1,2]</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון באיבר הראשון הוא 1.</p>
+</div>
+</section>
+<section id="למה-סיבכנו" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="למה-סיבכנו"><span class="header-section-number">8</span> למה סיבכנו?</h2>
+<p>כי ברוב מוחלט של המקרים, מידע גאוגרפי מכיל שני נתונים כאלה.</p>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<div class="ltr">
+<table class="table">
+<thead>
+<tr class="header">
+<th>index</th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column">
+<div class="fragment">
+<p>ולכן צריך שני צירים, כאלה:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="רגע-זה-טוב-רק-לנקודות-מה-עם-קווים" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="רגע-זה-טוב-רק-לנקודות-מה-עם-קווים"><span class="header-section-number">9</span> רגע, זה טוב רק לנקודות, מה עם קווים?</h2>
+<div class="fragment">
+<p>איך נייצג אותם על מערכת צירים?</p>
+</div>
+<div class="fragment">
+<p>רשימה משולשת:</p>
+</div>
+<div class="fragment">
+<p>[[[1,1],[2,2],[3,3]],[[4,4],[5,5]]]</p>
+</div>
+<div class="fragment">
+<p>מהו האיבר הNי ברשימה?</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון ברשימה הוא [[1,1],[2,2],[3,3]]</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון באיבר הראשון הוא [1,1]</p>
+</div>
+<div class="fragment">
+<p>האיבר הראשון באיבר הראשון באיבר הראשון הוא 1</p>
+</div>
+</section>
+<section id="ובייצוג-פשוט-יותר" class="level2 smaller" data-number="10">
+<h2 class="smaller anchored" data-number="10" data-anchor-id="ובייצוג-פשוט-יותר"><span class="header-section-number">10</span> ובייצוג פשוט יותר</h2>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<div class="ltr">
+<table class="table">
+<thead>
+<tr class="header">
+<th>index</th>
+<th>element</th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column">
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="אוקיי-יש-נקודות-יש-קווים-מה-עם-מצולעים" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="אוקיי-יש-נקודות-יש-קווים-מה-עם-מצולעים"><span class="header-section-number">11</span> אוקיי, יש נקודות, יש קווים, מה עם מצולעים?</h2>
+<p>מצולע - צורה סגורה. מעתה נקרא לה פוליגון.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="למעשה-הייצוג-שלה-זהה-לזה-של-קו-למעט" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="למעשה-הייצוג-שלה-זהה-לזה-של-קו-למעט"><span class="header-section-number">12</span> למעשה, הייצוג שלה זהה לזה של קו, למעט…</h2>
+<p>זה שהנקודה הראשונה והאחרונה זהות.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="נניח-יש-לי-תופעה-שמיוצגת-בכמה-מקומות-למשל" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="נניח-יש-לי-תופעה-שמיוצגת-בכמה-מקומות-למשל"><span class="header-section-number">13</span> נניח יש לי תופעה שמיוצגת בכמה מקומות, למשל:</h2>
+<p>השטח המוניציפלי של דימונה:</p>
+<p><img src="images/paste-1.png" class="img-fluid"></p>
+<p>. . .</p>
+<p>מה עושים?</p>
+</section>
+<section id="אפשר-לכלול-כמה-ישויות-שרוצים-בתוך-הרשימה-שדיברנו-עליה" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="אפשר-לכלול-כמה-ישויות-שרוצים-בתוך-הרשימה-שדיברנו-עליה"><span class="header-section-number">14</span> אפשר לכלול כמה ישויות שרוצים בתוך הרשימה שדיברנו עליה</h2>
+<p>וזה נקרא מולטי-ישות. לנקודה - מולטי נקודה לקו - מולטי קו לפוליגון - מולטי פוליגון</p>
+</section>
+<section id="שימו-לב" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="שימו-לב"><span class="header-section-number">15</span> שימו לב!</h2>
+<p>בתאוריה בטבלה אחת ניתן לייצג כמה סוגי ישויות -לערבב בטבלה אחת קו, נקודה ופוליגון. בקורס זה <strong>לא</strong> נעשה זאת.</p>
+</section>
+<section id="המחשה-נוספת" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="המחשה-נוספת"><span class="header-section-number">16</span> המחשה נוספת</h2>
+<p>נניח יש לנו את הטבלה הזאת:</p>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<div dir="ltr">
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>x</td>
+<td>y</td>
+<td>name</td>
+<td>age</td>
+<td>eyes_color</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>70</td>
+<td>70</td>
+<td>sam</td>
+<td>72</td>
+<td>black</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>38</td>
+<td>20</td>
+<td>pam</td>
+<td>62</td>
+<td>brown</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>62</td>
+<td>30</td>
+<td>wham</td>
+<td>45</td>
+<td>blue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="fragment">
+<p>היא תיוצג ככה על גבי מפה:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="class2_files/figure-revealjs/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="הפסקה-מתודית" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="הפסקה-מתודית"><span class="header-section-number">17</span> הפסקה מתודית</h2>
+</section>
+<section id="עבודה-בסיסית-עם-תוכנת-qgis" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="עבודה-בסיסית-עם-תוכנת-qgis"><span class="header-section-number">18</span> עבודה בסיסית עם תוכנת qgis</h2>
+<p>נפתח את התוכנה.</p>
+<p><img src="images/paste-2.png" class="img-fluid"></p>
+<p>זה מסך הפתיחה שלי. הוא יחסית עם הרבה “צעצועים” עליו, תוספים וכיו”ב.</p>
+<p>עם זאת, למטרת הקורס פתחתי פרופיל נקי, ללא תוספים. (גם אתם יכולים לעשות זאת, אם תרצו, בהמשך הקורס נלמד איך)</p>
+</section>
+<section id="טעינת-שכבות" class="level2 smaller" data-number="19">
+<h2 class="smaller anchored" data-number="19" data-anchor-id="טעינת-שכבות"><span class="header-section-number">19</span> טעינת שכבות</h2>
+<p>שכבה = טבלה עם “עמודה” המתארת מיקום במרחב.</p>
+<p>קידוד המיקום במרחב, בעבר, היה תובעני מבחינת מקום על הכונן.</p>
+<p>כיום בעייה זו פחות חריפה עבור רוב השימושים היומיומיים, עם זאת, מרבית הקבצים המקובלים בשימוש כיום הם קבצי shp.</p>
+<p>על מנת לטעון קובץ shp, חשוב <strong>מאוד</strong> לוודא כי הוא נמצא ב<strong>אותה התיקייה</strong> יחד עם לפחות עוד שני קבצים:</p>
+<p>קובץ DBF (שלמעשה מכיל את טבלת הנתונים)</p>
+<p>קובץ SHX (המכיל את האינדקס, ההקשר המרחבי. אין צורך לצלול לעומק בנושא זה)</p>
+<p>בשלב זה של הקורס נשתמש בקבצים המקובלים בשימוש בתעשייה, קבצי shp.</p>
+</section>
+<section id="איך-נטען-שכבה" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="איך-נטען-שכבה"><span class="header-section-number">20</span> איך נטען שכבה?</h2>
+<p>יש דרכים יותר “מסודרות” לעשות זאת. אבל נלמד אותן בהמשך הקורס.</p>
+<p>בשלב זה, נפתח את מיקום הקובץ שהורדנו בסייר הקבצים, ופשוט נגרור אותו לתוך התוכנה, כפי שמודגם בסרטון:</p>
+<p><img src="images/Untitled video - Made with Clipchamp.gif" class="img-fluid" width="500"></p>
+</section>
+<section id="שכבת-בסיס" class="level2" data-number="21">
+<h2 data-number="21" class="anchored" data-anchor-id="שכבת-בסיס"><span class="header-section-number">21</span> שכבת בסיס</h2>
+<p>מישהו יכול לנחש איפה אנחנו? מה אנחנו רואים?</p>
+<div class="fragment">
+<p>אתם לא חייבים לנחש, זאת מכללת תל חי.</p>
+<p>איך נדע זאת בלי קשר?</p>
+</div>
+<div class="fragment">
+<p>נוסיף שכבת בסיס.</p>
+<p>שכבות בסיס למעשה מחוברות לשרת באינטרנט המאפשר להן “למשוך” את התמונות מהאיזור הרלוונטי.</p>
+</div>
+<hr>
+<p>לא חובה להשתמש בהן - לפעמים יותר יפה בלי</p>
+<p><a href="https://www.lastmile.co.il/post/nofit">(מתוך הבלוג של אלון סיגלר)</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/paste-3.png" class="img-fluid figure-img" width="461"></p>
+<figcaption>https://static.wixstatic.com/media/0d4905_c42bc4ef0ae945bdacbdf1ec9687e2b4~mv2.jpg/v1/fill/w_740,h_740,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0d4905_c42bc4ef0ae945bdacbdf1ec9687e2b4~mv2.jpg</figcaption>
+</figure>
+</div>
+<hr>
+<p>ובכל זאת, ניתן להוסיף שכבת בסיס באמצעות פאנל הסיור (יוסבר עוד 3 שקפים), כפי שניתן לראות בסרטון:</p>
+<p><img src="images/Untitled video - Made with Clipchamp (1).gif" class="img-fluid" width="500"></p>
+</section>
+<section id="סרגל-הניווט" class="level2" data-number="22">
+<h2 data-number="22" class="anchored" data-anchor-id="סרגל-הניווט"><span class="header-section-number">22</span> סרגל הניווט</h2>
+<p>אז יש לנו את הישויות הגאוגרפיות עם מפת הרקע. זהו?</p>
+<p>לא, אפשר גם לנווט, להגדיל ולהקטין.</p>
+<p><img src="images/paste-4.png" class="img-fluid"></p>
+<p>מזמין אתכם להתנסות במקשים השונים, בעיקר במקשים היותר שמאליים.</p>
+<p>במידה ויש לכם גלגלת בעכבר - ניתן לעשות זום אין וזום אאוט.</p>
+<p>אתם לא מוצאים את סרגל הניווט?</p>
+<hr>
+<p>ניתן להוסיף/להוריד סרגלים ופאנלים, ככה(כפתור ימני על העכבר)</p>
+<p><img src="images/Untitled video - Made with Clipchamp (2).gif" class="img-fluid"></p>
+</section>
+<section id="פאנל-השכבות" class="level2" data-number="23">
+<h2 data-number="23" class="anchored" data-anchor-id="פאנל-השכבות"><span class="header-section-number">23</span> פאנל השכבות</h2>
+<p>פעמים רבות מאוד, ישויות שונות בשכבות שונות יהיו אחת על גבי השנייה. לכן סדר השכבות חשוב מאוד.</p>
+<p><img src="images/paste-5.png" class="img-fluid"></p>
+<hr>
+<p>בפאנל זה ניתן לגרור את השכבות אחת מעל השנייה (יחד עם עוד שלל פעולות) על מנת לקבוע את סדרן.</p>
+<p><img src="images/Untitled video - Made with Clipchamp (3).gif" class="img-fluid" width="500"></p>
+</section>
+<section id="פאנל-הסיור" class="level2" data-number="24">
+<h2 data-number="24" class="anchored" data-anchor-id="פאנל-הסיור"><span class="header-section-number">24</span> פאנל הסיור</h2>
+<p>דומה לסייר הקבצים במחשב. מאפשר חיפוש של קבצים אך גם קישורים למקורות אינטרנטיים של שכבות (עליהם נלמד בהמשך הקורס)</p>
+<p><img src="images/paste-6.png" class="img-fluid"></p>
+</section>
+<section id="סרגל-המאפיינים" class="level2 smaller" data-number="25">
+<h2 class="smaller anchored" data-number="25" data-anchor-id="סרגל-המאפיינים"><span class="header-section-number">25</span> סרגל המאפיינים</h2>
+<p><img src="images/paste-7.png" class="img-fluid"></p>
+<p><img src="images/paste-8.png" class="img-fluid"></p>
+<p>מאפשר בחינה של ישויות. <strong>לחצו</strong> על הכפתור ואז על ישות על גבי המפה בשביל להתנסות</p>
+<p><img src="images/paste-9.png" class="img-fluid"></p>
+<p>מאפשר פתיחה של טבלת הישויות. <strong>לחצו</strong> בשביל להתנסות ולראות את הטבלה.</p>
+<hr>
+<p><img src="images/paste-10.png" class="img-fluid"></p>
+<p>מאפשר מדידה של קו, שטח, כיוון או זווית, לבחירתכם. השימוש בו אינטואיטיבי.</p>
+</section>
+<section id="סרגל-הפרויקט" class="level2" data-number="26">
+<h2 data-number="26" class="anchored" data-anchor-id="סרגל-הפרויקט"><span class="header-section-number">26</span> סרגל הפרויקט</h2>
+<p><img src="images/paste-11.png" class="img-fluid"></p>
+<p>העבודה בqgis מתבצעת בפרויקטים.</p>
+</section>
+<section id="מהו-פרויקט" class="level2" data-number="27">
+<h2 data-number="27" class="anchored" data-anchor-id="מהו-פרויקט"><span class="header-section-number">27</span> מהו פרויקט?</h2>
+<p>אם נדבר במונחי powerpoint - הפרויקט מאגד את כלל השכבות בסדר, בסגנון ובמאפיינים, בדיוק כמו שמצגת מאגדת שקפים ותמונות.</p>
+<p>עם זאת, לאור העובדה שלרוב פרויקטים מתבססים על שכבות שונות - הפרויקט (לרוב,לא בהכרח, בהמשך הקורס נלמד אחרת) מאגד בין כלל הקבצים הטעונים בתוכנה בזמן מסוים.</p>
+<p>ולכן(בינתיים), כשנעבוד על פרויקט, נעשה זאת בתיקייה חדשה ונקייה, כאשר כלל הקבצים שמורים בתוכה, בצורה שלא ניתן להעביר קבצים ממקום למקום למחשב, כי זה יפגע בפרויקט.</p>
+</section>
+<section id="הדגמה-של-שמירת-פרויקט" class="level2" data-number="28">
+<h2 data-number="28" class="anchored" data-anchor-id="הדגמה-של-שמירת-פרויקט"><span class="header-section-number">28</span> הדגמה של שמירת פרויקט</h2>
+<p>בכיתה. יהיה קיים בהקלטה.</p>
+</section>
+<section id="תרגיל-2" class="level2 smaller" data-number="29">
+<h2 class="smaller anchored" data-number="29" data-anchor-id="תרגיל-2"><span class="header-section-number">29</span> תרגיל 2</h2>
+<p><strong>הורידו</strong> את החומרים לתרגיל מדף המטלה באתר הקורס.</p>
+<p><strong>שמרו</strong> פרויקט חדש בו יש:</p>
+<ul>
+<li><p>שכבת בסיס לבחירתכם.</p></li>
+<li><p>שכבת הפוליגונים/ מבנים מעליה.</p></li>
+<li><p>שכבת הקווים/כבישים מעליה.</p></li>
+<li><p>שכבת הנקודות/תחנות האוטובוס מעליה.</p></li>
+</ul>
+<p><strong>שמרו</strong> את כלל הקבצים בקובץ זיפ, כולל קובץ הפרויקט.</p>
+<p><strong>ודאו</strong> שהפרויקט עובד לאחר אנזיפ של הקבצים במקום אחר במחשב.</p>
+<p><strong>שלחו</strong> את קובץ הזיפ, בו קיים גם קובץ הפרויקט, שניתן לפותחו.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im5vdyA9IG5ldyBEYXRlXG4ifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../class2";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+
+<script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

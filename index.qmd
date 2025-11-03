@@ -51,6 +51,22 @@ format:
 :::
 
 
+::: {.callout-tip}
+## שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-QGIS
+
+
+[📖 לחץ כאן לצפייה בשיעור](class2/class2.html) | [🎯 הצגת שקפים](class2/index-slides.html)
+
+
+**נושאי השיעור (ברוטו):**
+
+- מבוא למידע מרחבי ווקטורי
+- שליטה בסיסית בתוכנת QGIS
+- טעינת שכבות ב-QGIS
+- עבודה בפרויקט
+:::
+
+
 ## שיעורים נוספים (בהכנה) {.smaller}
 ::: {.callout-note}
 **שיעור 2:** יסודות גאוגרפיים ומערכות קואורדינטות
