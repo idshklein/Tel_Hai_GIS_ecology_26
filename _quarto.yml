@@ -14,6 +14,8 @@ website:
         text: "שיעור 1"
       - href: class2/class2.qmd
         text: "שיעור 2"
+      - href: class3/class3.qmd
+        text: "שיעור 3"
   sidebar:
     title: "תכנית הלימודים"
     style: "floating"
@@ -23,6 +25,7 @@ website:
         contents:
           - class1.qmd
           - class2/class2.qmd
+          - class3/class3.qmd
 
 format:
   html:
