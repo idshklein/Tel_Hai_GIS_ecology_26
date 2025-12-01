@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl"><head>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.537">
 
   <meta name="author" content="ד”ר עדו קליין">
-  <meta name="dcterms.date" content="2025-12-01">
-  <title>קורס GIS ואקולוגיה - קורס GIS ואקולוגיה - תל חי</title>
+  <meta name="dcterms.date" content="2024-12-09">
+  <title>קורס GIS ואקולוגיה - שיעור 6: סימניות מרחביות, תמות ויצירת מפות</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,15 +30,81 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="style.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -324,13 +390,15 @@
       margin-right: 0; 
     }
   </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">קורס GIS ואקולוגיה - תל חי</h1>
+  <h1 class="title">שיעור 6: סימניות מרחביות, תמות ויצירת מפות</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -340,210 +408,171 @@
 </div>
 </div>
 
-  <p class="date">2025-12-01</p>
-</section>
-<section class="slide level2">
-<h2>ברוכים הבאים לקורס GIS ואקולוגיה</h2>
-<p>קורס זה מיועד להכרת יסודות מערכות המידע הגאוגרפי (GIS) ויישומן בתחום האקולוגיה והמחקר הסביבתי.</p>
-</section>
-<section class="slide level2">
-<h2>מטרות הקורס</h2>
-<ul>
-<li>הכרת מושגי יסוד במערכות מידע גאוגרפי</li>
-<li>למידת עבודה עם תוכנת QGIS</li>
-<li>פיתוח כישורי ניתוח מרחבי</li>
-<li>יישום GIS במחקר אקולוגי וסביבתי</li>
-</ul>
-</section>
-<section class="slide level2">
-<h2>מבנה הקורס</h2>
-<p>הקורס כולל 11 שיעורים תיאורטיים ומעשיים, עם תרגילים שבועיים ופרויקט מסכם.</p>
-</section>
-<section class="slide level2">
-<h2>שיעורים</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 1: מערכות מידע גאוגרפי</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class1.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class1-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li>מבוא למושגי יסוד ב-GIS</li>
-<li>סוגי מידע גאוגרפי (רסטר ווקטור)</li>
-<li>הכרת תוכנת QGIS</li>
-<li>תרגיל ראשון: התקנת QGIS</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 2: יסודות מידע מרחבי, שימוש בסיסי ב-QGIS</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class2/class2.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class2/index-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li>מבוא למידע מרחבי ווקטורי</li>
-<li>שליטה בסיסית בתוכנת QGIS</li>
-<li>טעינת שכבות ב-QGIS</li>
-<li>עבודה בפרויקט</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 3: יסודות גאוגרפיים ומערכות קואורדינטות</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class3/class3.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class3/index-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li>יסודות גאוגרפיים: קואורדינטות, קווי רוחב ואורך</li>
-<li>מערכות קואורדינטות גאוגרפיות והיטלים (CRS)</li>
-<li>המרות בין מערכות קואורדינטות</li>
-<li>עבודה עם קואורדינטות ב-QGIS וייצוא נתונים</li>
-<li>תרגיל: מדידת מרחקים במערכות קואורדינטות שונות</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class4/class4.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class4/index-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li><p>מבוא למפות: סוגים ושימושים</p></li>
-<li><p>יצירת מפות כלליות ונושאיות ב-QGIS</p></li>
-<li><p>סימבולוגיה וייצוג מידע<br>
-</p></li>
-<li><p>תרגיל: יצירת מפות נושאיות</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 5: GPKG, תוויות וסגנונות</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class5/class5.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class5/index-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li>טעינת ויצירה של GPKG</li>
-<li>שמירת שכבות וסגנונות בתוך GPKG</li>
-<li>יצירת תוויות וסגנונות לשכבות ב-QGIS</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>שיעור 6: סימניות מרחביות, תמות ויצירת מפות</strong></p>
-</div>
-<div class="callout-content">
-<p><a href="class6/class6.html">📖 לחץ כאן לצפייה בשיעור</a> | <a href="class6/index-slides.html">🎯 הצגת שקפים</a></p>
-<p><strong>נושאי השיעור:</strong></p>
-<ul>
-<li>ניהול סגנונות ושמירת סגנונות מרובים לשכבה</li>
-<li>יצירת ושימוש בסימניות מרחביות</li>
-<li>עבודה עם תמות (Themes) בQGIS</li>
-<li>יצירת מפות (Print Layouts) ואלמנטים קרטוגרפיים</li>
-<li>תרגיל: יצירת מפות עם תמות וסימניות</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2 smaller">
-<h2>שיעורים נוספים (בהכנה)</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>שיעור 7:</strong> טבלאות ושאילתות</p>
-<p><strong>שיעור 8:</strong> בחירה מרחבית וניתוח</p>
-<p><strong>שיעור 9:</strong> דיגיטציה ועריכה</p>
-<p><strong>שיעור 10:</strong> מניפולציות מרחביות</p>
-<p><strong>שיעור 11:</strong> מבוא לניתוח רסטרי</p>
-<p><strong>שיעור 12:</strong> מקורות מידע מרחביים</p>
-<p><strong>פרויקט מסכם:</strong> הצעות והגשה</p>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-<h2>דרישות הקורס</h2>
-<ul>
-<li><strong>תרגילים:</strong> 11 תרגילים שבועיים (70% מהציון)</li>
-<li><strong>פרויקט מסכם:</strong> עבודה בזוגות או שלישיות (30% מהציון)</li>
-<li><strong>הגשה:</strong> עד 10 ימים לאחר השיעור (יום חמישי 16:00)</li>
-</ul>
-</section>
-<section class="slide level2 smaller">
-<h2>כלים נדרשים</h2>
-<div>
-<ul>
-<li class="fragment"><strong>תוכנת QGIS</strong> (גרסה 3.40 LTR או חדשה יותר)</li>
-<li class="fragment">מחשב עם מערכת הפעלה Windows/Mac/Linux<br>
-</li>
-<li class="fragment">חיבור לאינטרנט</li>
-</ul>
-</div>
-</section>
-<section class="slide level2 smaller">
-<h2>קישורים שימושיים</h2>
-<div>
-<ul>
-<li class="fragment"><a href="https://www.qgis.org/">🌐 אתר QGIS הרשמי</a></li>
-<li class="fragment"><a href="https://www.qgis.org/he/site/">📚 מדריכי QGIS בעברית</a></li>
-<li class="fragment"><a href="https://www.gov.il/he/departments/topics/open-gis-data">🗺️ נתונים גאוגרפיים ישראליים</a></li>
-</ul>
-</div>
-</section>
-<section class="slide level2">
-<h2>צור קשר</h2>
-<p><strong>ד”ר עדו קליין</strong><br>
-📧 דוא”ל: idshklein@gmail.com<br>
-🕐 שעות קבלה: בתיאום מראש</p>
+  <p class="date">2024-12-09</p>
 </section>
 <section class="slide level2">
 
-<p><em>האתר נבנה באמצעות <a href="https://quarto.org">Quarto</a> עם תמיכה מלאה בעברית RTL</em></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="26" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb1-26"><a></a>now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>תזכורת לשיעור הקודם</h2>
+<ul>
+<li><p>למדנו איך טוענים GPKG</p></li>
+<li><p>למדנו איך מייצגים שכבות</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>בשיעור היום</h2>
+<ul>
+<li><p>נלמד איך לנהל סימניות מרחביות</p></li>
+<li><p>נלמד איך לנהל תמות</p></li>
+<li><p>נלמד איך לנהל מפות</p></li>
+</ul>
+</section>
+<section class="slide level2">
+<h2>היגיון של השיעור הנוכחי</h2>
+<p>על מנת לייצר מפה, אנו זקוקים ל3 אלמנטים מרכזיים:</p>
+<p>שכבות להצגה, בסגנון מסוים (על סגנונות למדנו בשיעור הקודם, אבל נרענן גם עכשיו)</p>
+<p>תיחום להצגה</p>
+<p>אלמנטים קרטוגרפיים</p>
+</section>
+<section class="slide level2">
+<h2>ניהול סגנונות</h2>
+<p>עבור כל שכבה, ניתן לשמור על מספר שונה של סגנונות. שמירה על מספר שונה של סגנונות מאפשר יצירת סדר ותיעוד של תהליך העבודה.</p>
+</section>
+<section class="slide level2">
+<h2>יצירת סגנון</h2>
+<p>שתי דרכים ליצירת סגנון:</p>
+<p>בפאנל השכבות:</p>
+
+<img data-src="images/paste-1.png" width="377" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>בתוך אפשרויות השכבה</p>
+
+<img data-src="images/paste-2.png" width="687" class="r-stretch"><div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>שימו לב</strong></p>
+</div>
+<div class="callout-content">
+<p>כאשר אתם נמצאים בתוך סגנון - הוא יישמר אוטומטית כל עוד תבצעו פעולות שינוי סגנון.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>החלפת סגנון</h2>
+<p>וכדומה בתוך אפשרויות השכבה</p>
+
+<img data-src="images/paste-3.png" width="316" class="r-stretch"></section>
+<section class="slide level2">
+<h2>ניהול סימניות מרחביות</h2>
+<p>סימניה מרחבית מאפשרת לחזור שוב ושוב לאותו תיחום של המפה</p>
+</section>
+<section class="slide level2">
+<h2>יצירת סימניה מרחבית</h2>
+
+<img data-src="images/paste-7.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="images/paste-9.png" class="r-stretch"></section>
+<section class="slide level2">
+<h2>תמות</h2>
+<p>theme הוא מצב של התוכנה, בו חלק מהשכבות מודלקות על סגנון מסוים. הוא מאפשר יצירה מחודשת של מפות בצורה מדויקת, ביחד עם סימניות מרחביות.</p>
+</section>
+<section class="slide level2">
+<h2>יצירת תמה</h2>
+
+<img data-src="images/paste-10.png" class="r-stretch"></section>
+<section class="slide level2">
+<h2>ניהול תמות</h2>
+<p>החלפת תמה מתבצעת על ידי לחיצה על התמה בשם אחר מזה שנתתם.</p>
+</section>
+<section class="slide level2">
+<h2>יצירת מפות</h2>
+<p><img data-src="images/paste-11.png" width="220"></p>
+<p>יש לתת שם ללייאוט בדיאלוג שייפתח. בפאנל הצידי ניתן לשלוט באובייקטים השונים במפה.</p>
+<p><img data-src="images/paste-16.png" width="242"></p>
+</section>
+<section class="slide level2">
+<h2>אלמנטים קרטוגרפיים</h2>
+<p>בפאנל הצידי השני (או בתפריט add item) ניתן להוסיף אלמנטים למפה, כמו מפה, מקרא, חץ צפון, קנה מידה, טקסט ועוד המון. נתעכב על החשובים ביניהם:</p>
+
+<img data-src="images/paste-19.png" width="280" class="r-stretch"></section>
+<section class="slide level2">
+<h2>מפה</h2>
+<p>הוספת מפה תתן לי את המבט שאני רואה על הקנבס של התוכנה כעת. תזוזה תשנה את תצורת המפה.</p>
+<p>על מנת להגיע למפה בת שחזור, אני צריך לקבוע שתי הגדרות - תמה(באדום), וסימניה מרחבית (בירוק). קיבוע זה מאפשר לי שחזור מדוייק של יצירת המפה.</p>
+
+<img data-src="images/paste-18.png" class="r-stretch"></section>
+<section class="slide level2">
+<h2>מקרא</h2>
+<p>המקרא כברירת מחדל יתן לי את כלל השכבות המוצגות. אני יכול לשלוט בו בתפריט item properties.</p>
+
+<img data-src="images/paste-20.png" class="r-stretch"></section>
+<section class="slide level2">
+<h2>עזרי התמצאות</h2>
+<p>חץ צפון</p>
+<p>קנה מידה</p>
+</section>
+<section class="slide level2">
+<h2>מידע נוסף</h2>
+<p>כותרת</p>
+<p>מידע בנוגע למפה</p>
+<p>מקורות מידע עליהם המפה מתבססת</p>
+</section>
+<section class="slide level2">
+<h2>ניהול מפות</h2>
+<p>במידה וייצרתי יותר ממפה אחת, יש לי אפשרות לדפדף בין מפות. ניתן להיכנס למנהל המפות דרך החלון הראשי או דרך חלון הלייאוט (אותו סמליל). ניתן לבחור מפה לפתיחה עם לחיצה כפולה, לשכפל מפה, לשנות שם או למחוק.</p>
+<p><img data-src="images/paste-21.png"></p>
+<p><img data-src="images/paste-22.png" width="329"></p>
+</section>
+<section class="slide level2 smaller">
+<h2>תרגיל 5</h2>
+<ol type="1">
+<li><p>הורידו מהאתר את הGPKG</p></li>
+<li><p>פתחו את פרויקט proj</p></li>
+<li><p>השקיפו את המילוי של שכבת city_boundries והוסיפו תווית לשם העיר</p></li>
+<li><p>יצרו שני סגנונות לשכבה projects_in_tlv - לפי סוג תשתית ולפי חברה הבונה את התשתית. שמרו את הסגנונות בתוך השכבה</p></li>
+<li><p>ייצרו את תמה type שיש בה את שכבת הפרויקטים בתל אביב עם סגנון סוג התשתית ללא שכבת הערים, ותמה city_company שיש בה את שכבת הערים ושכבת הפרוקיטים עם סגנון החברה הבונה</p></li>
+<li><p>יצרו שתי סימניות מרחביות בקנה מידה של 1:10000 ו1:5000. קראו להן בשם הקנה מידה. שמרו אותן בפרויקט.</p></li>
+<li><p>יצרו שתי מפות - אחת עם תמה הראשונה עם ה1:10000 ואחד עם התמה השנייה עם ה1:5000</p></li>
+<li><p>שמרו את המפות בתוך הפרויקט והגישו חזרה את הgpkg (זכרו לא להחליף את שם הקובץ)</p></li>
+</ol>
+</section>
+<section class="slide level2">
+<h2>ניווט</h2>
+<div class="callout callout-note callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p><strong>סיימת את השיעור!</strong></p>
+<p><a href="../index.html">🏠 חזור לדף הבית</a> | <a href="../class5/class5.html">📖 שיעור קודם</a> | <strong>שיעור הבא:</strong> בהכנה</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 center">
+<h2>תודה!</h2>
+<p><strong>שיעור 6 הסתיים</strong></p>
+<div class="center">
+<p><a href="../index.html" class="btn btn-primary">🏠 דף הבית</a> | <a href="class6.html" class="btn btn-success">📖 תצוגת HTML</a></p>
+</div>
+<p><strong>שיעור הבא:</strong> טבלאות ושאילתות</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -555,20 +584,20 @@
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -762,6 +791,17 @@
           RevealZoom
         ]
       });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im5vdyA9IG5ldyBEYXRlXHJcbiJ9XX0=
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../class6";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {

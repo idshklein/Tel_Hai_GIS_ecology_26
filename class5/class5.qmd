@@ -175,6 +175,9 @@ now = new Date
 
 ![](images/paste-14.png)
 
+
+
+
 ## תרגיל
 
 השבוע לא יינתן תרגיל

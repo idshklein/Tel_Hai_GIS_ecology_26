@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="ד”ר עדו קליין">
-<meta name="dcterms.date" content="2025-11-17">
+<meta name="dcterms.date" content="2024-12-09">
 
-<title>קורס GIS ואקולוגיה - שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</title>
+<title>קורס GIS ואקולוגיה - שיעור 6: סימניות מרחביות, תמות ויצירת מפות</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,8 +75,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -168,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class4/class4.html">שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class6/class6.html">שיעור 6: סימניות מרחביות, תמות ויצירת מפות</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -215,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../class4/class4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../class4/class4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</span></a>
   </div>
 </li>
@@ -227,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../class6/class6.html" class="sidebar-item-text sidebar-link">
+  <a href="../class6/class6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">שיעור 6: סימניות מרחביות, תמות ויצירת מפות</span></a>
   </div>
 </li>
@@ -245,36 +243,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#תזכורת-לשיעור-הקודם" id="toc-תזכורת-לשיעור-הקודם" class="nav-link active" data-scroll-target="#תזכורת-לשיעור-הקודם"><span class="header-section-number">1</span> תזכורת לשיעור הקודם</a></li>
   <li><a href="#בשיעור-היום" id="toc-בשיעור-היום" class="nav-link" data-scroll-target="#בשיעור-היום"><span class="header-section-number">2</span> בשיעור היום</a></li>
-  <li><a href="#סוגי-מפות" id="toc-סוגי-מפות" class="nav-link" data-scroll-target="#סוגי-מפות"><span class="header-section-number">3</span> סוגי מפות</a></li>
-  <li><a href="#דוגמאות-למפות-ייחוס" id="toc-דוגמאות-למפות-ייחוס" class="nav-link" data-scroll-target="#דוגמאות-למפות-ייחוס"><span class="header-section-number">4</span> דוגמאות למפות ייחוס:</a></li>
-  <li><a href="#דוגמאות-למפות-נושאיות" id="toc-דוגמאות-למפות-נושאיות" class="nav-link" data-scroll-target="#דוגמאות-למפות-נושאיות"><span class="header-section-number">5</span> דוגמאות למפות נושאיות:</a></li>
-  <li><a href="#צירי-ייחוס-של-אופי-המשתנה-המיוצג" id="toc-צירי-ייחוס-של-אופי-המשתנה-המיוצג" class="nav-link" data-scroll-target="#צירי-ייחוס-של-אופי-המשתנה-המיוצג"><span class="header-section-number">6</span> צירי ייחוס של אופי המשתנה המיוצג</a></li>
-  <li><a href="#נומינלי" id="toc-נומינלי" class="nav-link" data-scroll-target="#נומינלי"><span class="header-section-number">7</span> נומינלי</a></li>
-  <li><a href="#אורדינלי" id="toc-אורדינלי" class="nav-link" data-scroll-target="#אורדינלי"><span class="header-section-number">8</span> אורדינלי</a></li>
-  <li><a href="#אינטרוולי" id="toc-אינטרוולי" class="nav-link" data-scroll-target="#אינטרוולי"><span class="header-section-number">9</span> אינטרוולי</a></li>
-  <li><a href="#רציונלי" id="toc-רציונלי" class="nav-link" data-scroll-target="#רציונלי"><span class="header-section-number">10</span> רציונלי</a></li>
-  <li><a href="#אופי-הייצוג-בדו-מימד" id="toc-אופי-הייצוג-בדו-מימד" class="nav-link" data-scroll-target="#אופי-הייצוג-בדו-מימד"><span class="header-section-number">11</span> אופי הייצוג בדו מימד</a></li>
-  <li><a href="#מתי-נייצג-מה" id="toc-מתי-נייצג-מה" class="nav-link" data-scroll-target="#מתי-נייצג-מה"><span class="header-section-number">12</span> מתי נייצג מה?</a></li>
-  <li><a href="#השלמת-חובות---טעינת-פרויקט-מgpkg" id="toc-השלמת-חובות---טעינת-פרויקט-מgpkg" class="nav-link" data-scroll-target="#השלמת-חובות---טעינת-פרויקט-מgpkg"><span class="header-section-number">13</span> השלמת חובות - טעינת פרויקט מgpkg</a></li>
-  <li><a href="#כיצד-טוענים-פרויקט" id="toc-כיצד-טוענים-פרויקט" class="nav-link" data-scroll-target="#כיצד-טוענים-פרויקט"><span class="header-section-number">14</span> כיצד טוענים פרויקט?</a></li>
-  <li><a href="#עבודה-עם-פאנל-העיצוב" id="toc-עבודה-עם-פאנל-העיצוב" class="nav-link" data-scroll-target="#עבודה-עם-פאנל-העיצוב"><span class="header-section-number">15</span> עבודה עם פאנל העיצוב</a></li>
-  <li><a href="#סימול-אחיד" id="toc-סימול-אחיד" class="nav-link" data-scroll-target="#סימול-אחיד"><span class="header-section-number">16</span> סימול אחיד</a></li>
-  <li><a href="#סימול-מורכב-יותר" id="toc-סימול-מורכב-יותר" class="nav-link" data-scroll-target="#סימול-מורכב-יותר"><span class="header-section-number">17</span> סימול מורכב יותר</a></li>
-  <li><a href="#סימול-לפי-קטגוריות" id="toc-סימול-לפי-קטגוריות" class="nav-link" data-scroll-target="#סימול-לפי-קטגוריות"><span class="header-section-number">18</span> סימול לפי קטגוריות</a></li>
-  <li><a href="#תזכורת" id="toc-תזכורת" class="nav-link" data-scroll-target="#תזכורת"><span class="header-section-number">19</span> תזכורת!</a></li>
-  <li><a href="#סימול-לפי-משתנה-רציף---אוטומטי" id="toc-סימול-לפי-משתנה-רציף---אוטומטי" class="nav-link" data-scroll-target="#סימול-לפי-משתנה-רציף---אוטומטי"><span class="header-section-number">20</span> סימול לפי משתנה רציף - אוטומטי</a></li>
-  <li><a href="#צורות-חלוקה-של-מידע" id="toc-צורות-חלוקה-של-מידע" class="nav-link" data-scroll-target="#צורות-חלוקה-של-מידע"><span class="header-section-number">21</span> צורות חלוקה של מידע</a></li>
-  <li><a href="#סימול-לפי-משתנה-רציף---ידני" id="toc-סימול-לפי-משתנה-רציף---ידני" class="nav-link" data-scroll-target="#סימול-לפי-משתנה-רציף---ידני"><span class="header-section-number">22</span> סימול לפי משתנה רציף - ידני</a></li>
-  <li><a href="#תרגיל-4" id="toc-תרגיל-4" class="nav-link" data-scroll-target="#תרגיל-4"><span class="header-section-number">23</span> תרגיל 4</a></li>
+  <li><a href="#היגיון-של-השיעור-הנוכחי" id="toc-היגיון-של-השיעור-הנוכחי" class="nav-link" data-scroll-target="#היגיון-של-השיעור-הנוכחי"><span class="header-section-number">3</span> היגיון של השיעור הנוכחי</a></li>
+  <li><a href="#ניהול-סגנונות" id="toc-ניהול-סגנונות" class="nav-link" data-scroll-target="#ניהול-סגנונות"><span class="header-section-number">4</span> ניהול סגנונות</a></li>
+  <li><a href="#יצירת-סגנון" id="toc-יצירת-סגנון" class="nav-link" data-scroll-target="#יצירת-סגנון"><span class="header-section-number">5</span> יצירת סגנון</a></li>
+  <li><a href="#החלפת-סגנון" id="toc-החלפת-סגנון" class="nav-link" data-scroll-target="#החלפת-סגנון"><span class="header-section-number">6</span> החלפת סגנון</a></li>
+  <li><a href="#ניהול-סימניות-מרחביות" id="toc-ניהול-סימניות-מרחביות" class="nav-link" data-scroll-target="#ניהול-סימניות-מרחביות"><span class="header-section-number">7</span> ניהול סימניות מרחביות</a></li>
+  <li><a href="#יצירת-סימניה-מרחבית" id="toc-יצירת-סימניה-מרחבית" class="nav-link" data-scroll-target="#יצירת-סימניה-מרחבית"><span class="header-section-number">8</span> יצירת סימניה מרחבית</a></li>
+  <li><a href="#תמות" id="toc-תמות" class="nav-link" data-scroll-target="#תמות"><span class="header-section-number">9</span> תמות</a></li>
+  <li><a href="#יצירת-תמה" id="toc-יצירת-תמה" class="nav-link" data-scroll-target="#יצירת-תמה"><span class="header-section-number">10</span> יצירת תמה</a></li>
+  <li><a href="#ניהול-תמות" id="toc-ניהול-תמות" class="nav-link" data-scroll-target="#ניהול-תמות"><span class="header-section-number">11</span> ניהול תמות</a></li>
+  <li><a href="#יצירת-מפות" id="toc-יצירת-מפות" class="nav-link" data-scroll-target="#יצירת-מפות"><span class="header-section-number">12</span> יצירת מפות</a></li>
+  <li><a href="#אלמנטים-קרטוגרפיים" id="toc-אלמנטים-קרטוגרפיים" class="nav-link" data-scroll-target="#אלמנטים-קרטוגרפיים"><span class="header-section-number">13</span> אלמנטים קרטוגרפיים</a></li>
+  <li><a href="#מפה" id="toc-מפה" class="nav-link" data-scroll-target="#מפה"><span class="header-section-number">14</span> מפה</a></li>
+  <li><a href="#מקרא" id="toc-מקרא" class="nav-link" data-scroll-target="#מקרא"><span class="header-section-number">15</span> מקרא</a></li>
+  <li><a href="#עזרי-התמצאות" id="toc-עזרי-התמצאות" class="nav-link" data-scroll-target="#עזרי-התמצאות"><span class="header-section-number">16</span> עזרי התמצאות</a></li>
+  <li><a href="#מידע-נוסף" id="toc-מידע-נוסף" class="nav-link" data-scroll-target="#מידע-נוסף"><span class="header-section-number">17</span> מידע נוסף</a></li>
+  <li><a href="#ניהול-מפות" id="toc-ניהול-מפות" class="nav-link" data-scroll-target="#ניהול-מפות"><span class="header-section-number">18</span> ניהול מפות</a></li>
+  <li><a href="#תרגיל-5" id="toc-תרגיל-5" class="nav-link" data-scroll-target="#תרגיל-5"><span class="header-section-number">19</span> תרגיל 5</a></li>
+  <li><a href="#ניווט" id="toc-ניווט" class="nav-link" data-scroll-target="#ניווט"><span class="header-section-number">20</span> ניווט</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index-slides.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class4/class4.html">שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../class1.html">שיעורים</a></li><li class="breadcrumb-item"><a href="../class6/class6.html">שיעור 6: סימניות מרחביות, תמות ויצירת מפות</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">שיעור 4: מפות כלליות, מפות נושאיות וסימבולוגיה</h1>
+<h1 class="title">שיעור 6: סימניות מרחביות, תמות ויצירת מפות</h1>
 </div>
 
 
@@ -291,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 17, 2025</p>
+      <p class="date">December 9, 2024</p>
     </div>
   </div>
   
@@ -304,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="27" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 26;"><span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="26" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 25;"><span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
 
@@ -314,205 +309,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="תזכורת-לשיעור-הקודם" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="תזכורת-לשיעור-הקודם"><span class="header-section-number">1</span> תזכורת לשיעור הקודם</h2>
 <ul>
-<li><p>דיברנו על מערכות קוארדינטות, היטלים ומדידה</p></li>
-<li><p>התנסנו במדידת מרחקים בתוכנה, בהיטלים שונים</p></li>
+<li><p>למדנו איך טוענים GPKG</p></li>
+<li><p>למדנו איך מייצגים שכבות</p></li>
 </ul>
 </section>
 <section id="בשיעור-היום" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="בשיעור-היום"><span class="header-section-number">2</span> בשיעור היום</h2>
 <ul>
-<li><p>נלמד על סוגים שונים של מפות ואיך מייצגים אותן</p></li>
-<li><p>נתנסה ביצירת מפות שונות באמצעות סימבולוגיה</p></li>
+<li><p>נלמד איך לנהל סימניות מרחביות</p></li>
+<li><p>נלמד איך לנהל תמות</p></li>
+<li><p>נלמד איך לנהל מפות</p></li>
 </ul>
 </section>
-<section id="סוגי-מפות" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="סוגי-מפות"><span class="header-section-number">3</span> סוגי מפות</h2>
-<p>קיימים שני סוגים מרכזיים של מפות:</p>
-<ul>
-<li><p>מפות ייחוס - מפות המתארות את יחסן של ישויות גאוגרפיות אחת לשניה ואל המרחב</p></li>
-<li><p>מפות נושאיות - מפות המתארות תופעה מרחבית, בלי קשר הכרחי לישויות הגאוגרפיות הקיימות במרחב הממופה</p></li>
-</ul>
+<section id="היגיון-של-השיעור-הנוכחי" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="היגיון-של-השיעור-הנוכחי"><span class="header-section-number">3</span> היגיון של השיעור הנוכחי</h2>
+<p>על מנת לייצר מפה, אנו זקוקים ל3 אלמנטים מרכזיים:</p>
+<p>שכבות להצגה, בסגנון מסוים (על סגנונות למדנו בשיעור הקודם, אבל נרענן גם עכשיו)</p>
+<p>תיחום להצגה</p>
+<p>אלמנטים קרטוגרפיים</p>
 </section>
-<section id="דוגמאות-למפות-ייחוס" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="דוגמאות-למפות-ייחוס"><span class="header-section-number">4</span> דוגמאות למפות ייחוס:</h2>
-<p>רמה גבוהה - אך ורק צירים מרכזיים, רק אזורי יישוב</p>
-<p><img src="images/paste-6.png" class="img-fluid" width="551"></p>
-<hr>
-<p>רמה אחת למטה - יותר צירים, שימוש קרקע, מספרי כבישים, קווי חשמל, נחלים/תעלות מים,רכבל</p>
-<p><img src="images/paste-7.png" class="img-fluid" width="551"></p>
-<hr>
-<p>עוד רמה למטה - שמות, כלל הרחובות, מסלולי אופניים</p>
-<p><img src="images/paste-8.png" class="img-fluid" width="551"></p>
-<hr>
-<p>עוד רמה למטה - שמות רחובות ראשיים, שמות אזורי תעשיה</p>
-<p><img src="images/paste-9.png" class="img-fluid" width="551"></p>
-<hr>
-<p>עוד רמה למטה - שמות כלל הרחובות, שמות השכונות</p>
-<p><img src="images/paste-10.png" class="img-fluid" width="551"></p>
-<hr>
-<p>עוד רמה - שמות מבנים, תחנות אוטובוס, חניות</p>
-<p><img src="images/paste-11.png" class="img-fluid" width="551"></p>
-<hr>
-<p>ההתמצאות מאוד תלויה בקנה המידה שאמור לעניין אותנו, ובישויות הרלוונטיות עבורנו מבחינת ההתמצאות. ומכאן גם רמת הדיוק שצריכה להיגזר מהישויות.</p>
+<section id="ניהול-סגנונות" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="ניהול-סגנונות"><span class="header-section-number">4</span> ניהול סגנונות</h2>
+<p>עבור כל שכבה, ניתן לשמור על מספר שונה של סגנונות. שמירה על מספר שונה של סגנונות מאפשר יצירת סדר ותיעוד של תהליך העבודה.</p>
 </section>
-<section id="דוגמאות-למפות-נושאיות" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="דוגמאות-למפות-נושאיות"><span class="header-section-number">5</span> דוגמאות למפות נושאיות:</h2>
-<p>מגזר אוכלוסיה באיזורים שונים בירושלים</p>
-<p><img src="images/paste-12.png" class="img-fluid" width="551"></p>
+<section id="יצירת-סגנון" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="יצירת-סגנון"><span class="header-section-number">5</span> יצירת סגנון</h2>
+<p>שתי דרכים ליצירת סגנון:</p>
+<p>בפאנל השכבות:</p>
+<p><img src="images/paste-1.png" class="img-fluid" width="377"></p>
 <hr>
-<p>כמות יחידות דיור באיזורים שונים בירושלים</p>
-<p><img src="images/paste-13.png" class="img-fluid" width="551"></p>
+<p>בתוך אפשרויות השכבה</p>
+<p><img src="images/paste-2.png" class="img-fluid" width="687"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+שימו לב
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>כאשר אתם נמצאים בתוך סגנון - הוא יישמר אוטומטית כל עוד תבצעו פעולות שינוי סגנון.</p>
+</div>
+</div>
+</section>
+<section id="החלפת-סגנון" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="החלפת-סגנון"><span class="header-section-number">6</span> החלפת סגנון</h2>
+<p>וכדומה בתוך אפשרויות השכבה</p>
+<p><img src="images/paste-3.png" class="img-fluid" width="316"></p>
+</section>
+<section id="ניהול-סימניות-מרחביות" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="ניהול-סימניות-מרחביות"><span class="header-section-number">7</span> ניהול סימניות מרחביות</h2>
+<p>סימניה מרחבית מאפשרת לחזור שוב ושוב לאותו תיחום של המפה</p>
+</section>
+<section id="יצירת-סימניה-מרחבית" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="יצירת-סימניה-מרחבית"><span class="header-section-number">8</span> יצירת סימניה מרחבית</h2>
+<p><img src="images/paste-7.png" class="img-fluid"></p>
 <hr>
-<p>מרחקי הליכה מכל מבנה בירושלים אל תחנת הרק”ל הקרובה אליו</p>
-<p><img src="images/paste-16.png" class="img-fluid"></p>
+<p><img src="images/paste-9.png" class="img-fluid"></p>
 </section>
-<section id="צירי-ייחוס-של-אופי-המשתנה-המיוצג" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="צירי-ייחוס-של-אופי-המשתנה-המיוצג"><span class="header-section-number">6</span> צירי ייחוס של אופי המשתנה המיוצג</h2>
-<p>קיימים 4 צירים מרכזיים של ייצוג מידע, על בסיסם ניתן לייצג משתנים שונים:</p>
-<ol type="1">
-<li>ציר נומינלי</li>
-<li>ציר אורדינלי</li>
-<li>ציר אינטרוולי</li>
-<li>ציר רציונלי</li>
-</ol>
+<section id="תמות" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="תמות"><span class="header-section-number">9</span> תמות</h2>
+<p>theme הוא מצב של התוכנה, בו חלק מהשכבות מודלקות על סגנון מסוים. הוא מאפשר יצירה מחודשת של מפות בצורה מדויקת, ביחד עם סימניות מרחביות.</p>
 </section>
-<section id="נומינלי" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="נומינלי"><span class="header-section-number">7</span> נומינלי</h2>
-<p>מבוסס על שמות. היינו - כל ערך השונה מחברו שונה ממנו בצורה מוחלטת, ללא ציר ייחוס כלשהו. היינו - אין חשיבות כלשהי לסדר בין הערכים</p>
-<p>דוגמא - מגזרים</p>
+<section id="יצירת-תמה" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="יצירת-תמה"><span class="header-section-number">10</span> יצירת תמה</h2>
+<p><img src="images/paste-10.png" class="img-fluid"></p>
 </section>
-<section id="אורדינלי" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="אורדינלי"><span class="header-section-number">8</span> אורדינלי</h2>
-<p>מבוסס על רמות. היינו - כל ערך השונה מחברו נמצא ביחס של “מעליו” או מתחתיו</p>
-<p>דוגמא - דרגות בצבא.</p>
-<p>דוגמא במפה - אשכול חברתי כלכלי של הלמס</p>
+<section id="ניהול-תמות" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="ניהול-תמות"><span class="header-section-number">11</span> ניהול תמות</h2>
+<p>החלפת תמה מתבצעת על ידי לחיצה על התמה בשם אחר מזה שנתתם.</p>
+</section>
+<section id="יצירת-מפות" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="יצירת-מפות"><span class="header-section-number">12</span> יצירת מפות</h2>
+<p><img src="images/paste-11.png" class="img-fluid" width="220"></p>
+<p>יש לתת שם ללייאוט בדיאלוג שייפתח. בפאנל הצידי ניתן לשלוט באובייקטים השונים במפה.</p>
+<p><img src="images/paste-16.png" class="img-fluid" width="242"></p>
+</section>
+<section id="אלמנטים-קרטוגרפיים" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="אלמנטים-קרטוגרפיים"><span class="header-section-number">13</span> אלמנטים קרטוגרפיים</h2>
+<p>בפאנל הצידי השני (או בתפריט add item) ניתן להוסיף אלמנטים למפה, כמו מפה, מקרא, חץ צפון, קנה מידה, טקסט ועוד המון. נתעכב על החשובים ביניהם:</p>
+<p><img src="images/paste-19.png" class="img-fluid" width="280"></p>
+</section>
+<section id="מפה" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="מפה"><span class="header-section-number">14</span> מפה</h2>
+<p>הוספת מפה תתן לי את המבט שאני רואה על הקנבס של התוכנה כעת. תזוזה תשנה את תצורת המפה.</p>
+<p>על מנת להגיע למפה בת שחזור, אני צריך לקבוע שתי הגדרות - תמה(באדום), וסימניה מרחבית (בירוק). קיבוע זה מאפשר לי שחזור מדוייק של יצירת המפה.</p>
 <p><img src="images/paste-18.png" class="img-fluid"></p>
 </section>
-<section id="אינטרוולי" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="אינטרוולי"><span class="header-section-number">9</span> אינטרוולי</h2>
-<p>מבוסס על מרווחים. היינו - כל ערך השונה מחברו נמצא ממנו היחידות רווח עם משמעות מסוימת, אבל לא עם משמעות יחסית מסוימת.</p>
-<p>דוגמא - מעלות צלזיוס. גובה מעל פני הים.</p>
-<p><img src="images/paste-19.png" class="img-fluid"></p>
+<section id="מקרא" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="מקרא"><span class="header-section-number">15</span> מקרא</h2>
+<p>המקרא כברירת מחדל יתן לי את כלל השכבות המוצגות. אני יכול לשלוט בו בתפריט item properties.</p>
+<p><img src="images/paste-20.png" class="img-fluid"></p>
 </section>
-<section id="רציונלי" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="רציונלי"><span class="header-section-number">10</span> רציונלי</h2>
-<p>מבוסס על חלוקה. היינו - יש משמעות לחלוקה בין ערכים.</p>
-<p>דוגמא - מהירות. כמות יחידות דיור</p>
+<section id="עזרי-התמצאות" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="עזרי-התמצאות"><span class="header-section-number">16</span> עזרי התמצאות</h2>
+<p>חץ צפון</p>
+<p>קנה מידה</p>
 </section>
-<section id="אופי-הייצוג-בדו-מימד" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="אופי-הייצוג-בדו-מימד"><span class="header-section-number">11</span> אופי הייצוג בדו מימד</h2>
+<section id="מידע-נוסף" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="מידע-נוסף"><span class="header-section-number">17</span> מידע נוסף</h2>
+<p>כותרת</p>
+<p>מידע בנוגע למפה</p>
+<p>מקורות מידע עליהם המפה מתבססת</p>
+</section>
+<section id="ניהול-מפות" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="ניהול-מפות"><span class="header-section-number">18</span> ניהול מפות</h2>
+<p>במידה וייצרתי יותר ממפה אחת, יש לי אפשרות לדפדף בין מפות. ניתן להיכנס למנהל המפות דרך החלון הראשי או דרך חלון הלייאוט (אותו סמליל). ניתן לבחור מפה לפתיחה עם לחיצה כפולה, לשכפל מפה, לשנות שם או למחוק.</p>
+<p><img src="images/paste-21.png" class="img-fluid"></p>
+<p><img src="images/paste-22.png" class="img-fluid" width="329"></p>
+</section>
+<section id="תרגיל-5" class="level2 smaller" data-number="19">
+<h2 class="smaller anchored" data-number="19" data-anchor-id="תרגיל-5"><span class="header-section-number">19</span> תרגיל 5</h2>
 <ol type="1">
-<li>צבע</li>
+<li><p>הורידו מהאתר את הGPKG</p></li>
+<li><p>פתחו את פרויקט proj</p></li>
+<li><p>השקיפו את המילוי של שכבת city_boundries והוסיפו תווית לשם העיר</p></li>
+<li><p>יצרו שני סגנונות לשכבה projects_in_tlv - לפי סוג תשתית ולפי חברה הבונה את התשתית. שמרו את הסגנונות בתוך השכבה</p></li>
+<li><p>ייצרו את תמה type שיש בה את שכבת הפרויקטים בתל אביב עם סגנון סוג התשתית ללא שכבת הערים, ותמה city_company שיש בה את שכבת הערים ושכבת הפרוקיטים עם סגנון החברה הבונה</p></li>
+<li><p>יצרו שתי סימניות מרחביות בקנה מידה של 1:10000 ו1:5000. קראו להן בשם הקנה מידה. שמרו אותן בפרויקט.</p></li>
+<li><p>יצרו שתי מפות - אחת עם תמה הראשונה עם ה1:10000 ואחד עם התמה השנייה עם ה1:5000</p></li>
+<li><p>שמרו את המפות בתוך הפרויקט והגישו חזרה את הgpkg (זכרו לא להחליף את שם הקובץ)</p></li>
 </ol>
-<p><img src="images/paste-21.png" class="img-fluid" width="551"></p>
-<hr>
-<ol start="2" type="1">
-<li>צורה</li>
-</ol>
-<p><img src="images/paste-23.png" class="img-fluid" width="551"></p>
-<hr>
-<ol start="3" type="1">
-<li>גודל</li>
-</ol>
-<p><img src="images/paste-22.png" class="img-fluid" width="551"></p>
-<hr>
-<ol start="4" type="1">
-<li>מילוי</li>
-</ol>
-<p><img src="images/paste-24.png" class="img-fluid" width="551"></p>
-<hr>
-<ol start="5" type="1">
-<li>שקיפות</li>
-</ol>
-<p><img src="images/paste-25.png" class="img-fluid" width="551"></p>
-<hr>
-<ol start="6" type="1">
-<li>מרקם קו</li>
-</ol>
-<p><img src="images/paste-26.png" class="img-fluid" width="551"></p>
-</section>
-<section id="מתי-נייצג-מה" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="מתי-נייצג-מה"><span class="header-section-number">12</span> מתי נייצג מה?</h2>
-<p>תלוי בתוצאה שרוצים לייצג. הרבה מאוד ניסוי וטעייה.</p>
-<p>הנחיות של מומחי ויזואליזציה. אני לא אחד מהם - אני מראה את כיצד. לא את האיך.</p>
-<p>תחושה וניסיון.</p>
-</section>
-<section id="השלמת-חובות---טעינת-פרויקט-מgpkg" class="level2" data-number="13">
-<h2 data-number="13" class="anchored" data-anchor-id="השלמת-חובות---טעינת-פרויקט-מgpkg"><span class="header-section-number">13</span> השלמת חובות - טעינת פרויקט מgpkg</h2>
-<p>קבצי GPKG הם קבצים בקוד פתוח, המאפשרים ניהול מלא של פרויקט מקובץ אחד, כולל שכבות, סגנונות ופרויקט שלם. באפשרותינו להעלות שכבות לGPKG, לשמור מספר פרויקטים המתבססים על שכבות אלו, ועוד הרבה מאוד.</p>
-</section>
-<section id="כיצד-טוענים-פרויקט" class="level2" data-number="14">
-<h2 data-number="14" class="anchored" data-anchor-id="כיצד-טוענים-פרויקט"><span class="header-section-number">14</span> כיצד טוענים פרויקט?</h2>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" width="600" height="420" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title="Why all world maps are wrong"><source src="load_proj.mp4"></video></div>
-</section>
-<section id="עבודה-עם-פאנל-העיצוב" class="level2" data-number="15">
-<h2 data-number="15" class="anchored" data-anchor-id="עבודה-עם-פאנל-העיצוב"><span class="header-section-number">15</span> עבודה עם פאנל העיצוב</h2>
-<p>שתי דרכי גישה אל פאנל העיצוב:</p>
-<p><img src="images/paste-27.png" class="img-fluid" width="551"></p>
-<hr>
-<p><img src="images/paste-28.png" class="img-fluid"></p>
-<hr>
-<p>בחלון נפרד</p>
-<p><img src="images/paste-29.png" class="img-fluid"></p>
-</section>
-<section id="סימול-אחיד" class="level2" data-number="16">
-<h2 data-number="16" class="anchored" data-anchor-id="סימול-אחיד"><span class="header-section-number">16</span> סימול אחיד</h2>
-<p>התוכנה מאפשרת לנו לבצע סימולים אחידים עבור כל השכבה. במידה ואנחנו לא רוצים להיכנס לפרטים, ניתן לעשות קוסטימיזציה למאפיינים בסיסיים כמו גודל, צבע, שקיפות וזווית. ניתן גם לבחור סגנון קבוע מראש.</p>
-<p><img src="images/paste-30.png" class="img-fluid" width="551"></p>
-</section>
-<section id="סימול-מורכב-יותר" class="level2" data-number="17">
-<h2 data-number="17" class="anchored" data-anchor-id="סימול-מורכב-יותר"><span class="header-section-number">17</span> סימול מורכב יותר</h2>
-<p>במידה ולוחצים על simple marker, אפשר לשפר את השליטה בסימון הנקודה.</p>
-<p><img src="images/paste-31.png" class="img-fluid" width="551"></p>
-<hr>
-<p>יש הרבה מאוד אפשרויות סגנון, ניתן להעלות סוגים שונים של מרקרים מתמונות וכו’. מדובר בעולם תוכן שלם, ולא ניגע בו בקורס זה, שכן הוא כולל הרבה מאוד למידה עצמית, והוא מאוד תלוי למה שרוצים להשיג.</p>
-</section>
-<section id="סימול-לפי-קטגוריות" class="level2" data-number="18">
-<h2 data-number="18" class="anchored" data-anchor-id="סימול-לפי-קטגוריות"><span class="header-section-number">18</span> סימול לפי קטגוריות</h2>
-<p>נשנה את הבחירה בדרופדאון העליון לcategorized</p>
-<p><img src="images/paste-32.png" class="img-fluid" width="551"></p>
 <hr>
 </section>
-<section id="תזכורת" class="level2" data-number="19">
-<h2 data-number="19" class="anchored" data-anchor-id="תזכורת"><span class="header-section-number">19</span> תזכורת!</h2>
-<p>כל שכבה היא טבלה. בכל טבלה יש עמודות שונות. נלמד בהמשך הקורס לעומק על הישויות ועל סינון ושליטה במידע. אבל בינתיים - חשוב להכיר את טבלת הישויות - attribute table. פאנל layers -&gt; כפתור ימני על השכבה הרצויה -&gt; attribute table</p>
-<hr>
-<p>השליטה הבסיסית כאן היא: על בסיס איזה משתנה מחלקים לקטגוריות. qgis מציין אם המשתנה הוא מספרי או טקסטואלי, ובכך מסייע בבחירה <img src="images/paste-33.png" class="img-fluid"> | שימו לב! תמיד יש ללחוץ על כפתור הclassify על מנת לחלק לרמות השונות</p>
-</section>
-<section id="סימול-לפי-משתנה-רציף---אוטומטי" class="level2" data-number="20">
-<h2 data-number="20" class="anchored" data-anchor-id="סימול-לפי-משתנה-רציף---אוטומטי"><span class="header-section-number">20</span> סימול לפי משתנה רציף - אוטומטי</h2>
-<p>ומה מאוד לסימון לפי משתנה קטגוריאלי, בשינוי משמעותי אחד - השליטה בחלוקה לרמות. ניתן לבצע אותה בצורה אוטומטית או ידנית:<br>
-צורה אוטומטית, יש ללחוץ על תפריט mode (לאחר שבחרנו את המשתנה ולחצנו על classify), ולבחור את צורת החלוקה בין הנתונים.</p>
-</section>
-<section id="צורות-חלוקה-של-מידע" class="level2 smaller" data-number="21">
-<h2 class="smaller anchored" data-number="21" data-anchor-id="צורות-חלוקה-של-מידע"><span class="header-section-number">21</span> צורות חלוקה של מידע</h2>
-<p><br>
-. x-ונים - כמות שווה של דגימות בכל קבוצה (חציונים, רביעונים, חמישונים, עשירונים וכו’)<br>
-. מרווח שווה בין הערכים (נניח שסט הערכים בין 0 ל10, ואנו מחלקים בחמש, החלוקות יהיו במספרים הזוגיים)<br>
-. סקאלה לוגרתמית - חלוקה שווה בין החזקות הלוגרתמיות<br>
-. הפסקות טבעיות - מבוססות אלגורתם jenks (ממזער שונות בתוך הקבוצה, ממקסם שונות בין הקבוצות)<br>
-. הפסקות יפות - מבוססות עיגול ערכים . חלוקה מבוססת מיקום הדגימה בהתחשב מהסטייה של הנתון מהממוצע</p>
-<hr>
-<p>כפתור הclasses מאפשר לנו לחלק את הדאטה לכמות הרמות הרצויה.<br>
-שימוש בhistogram מאפשר לנו לראות כיצד הדאטה מתפלג, ומסייע בהבנה של איך יהיה חכם לייצג אותו בצורה לא מרחבית.<br>
-ניתן אף להוסיף רמות על ידי לחיצה על המקום בהיסטוגרמה בו רוצים להוסיף, או לשנות גבולות על ידי הזזת הקווים על ההיסטוגרמה. (לא לשכוח ללחוץ על load values בהתחלה)</p>
-<p><img src="images/paste-36.png" class="img-fluid" width="400"></p>
-</section>
-<section id="סימול-לפי-משתנה-רציף---ידני" class="level2" data-number="22">
-<h2 data-number="22" class="anchored" data-anchor-id="סימול-לפי-משתנה-רציף---ידני"><span class="header-section-number">22</span> סימול לפי משתנה רציף - ידני</h2>
-<p>ניתן גם לחלק לרמות שונות בצורה ידנית - בחירת המשתנה, הוספת רמות באמצעות לחיצה על כפתור הפלוס, בחירה הרמה הרצויה, ודאבל קליק על עמודת הvalues.<br>
-שם יש לציין גבול תחתון ועליון לרמת הייצוג.<br>
-במידה ויש כמה רמות, הגבולות בין הרמה לרמות האחרות ישתנו בהתאם לשינוי שמבצעים ברמה.<br>
-יש לבחור צבעים לכל רמה על ידי דאבל קליק על עמודת symbol,וגם לשנות את התגית של הקבוצה על ידי דאבל קליק על השדה בעמודת legend.</p>
-</section>
-<section id="תרגיל-4" class="level2" data-number="23">
-<h2 data-number="23" class="anchored" data-anchor-id="תרגיל-4"><span class="header-section-number">23</span> תרגיל 4</h2>
-<ol type="1">
-<li><p>הורידו את הGPKG מהאתר ופתחו את הפרויקט</p></li>
-<li><p>ייצגו את המבנים במפה לפי שנת הבנייה שלהם בסקאלה רציונלית וצלמו את המסך</p></li>
-<li><p>ייצגו את המבנים במפה לפי מספר הקומות שלהם בסקאלה אורדינלית וצלמו את המסך</p></li>
-<li><p>העלו את צילומי המסך למודל</p></li>
-</ol>
+<section id="ניווט" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="ניווט"><span class="header-section-number">20</span> ניווט</h2>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>סיימת את השיעור!</strong></p>
+<p><a href="../index.html">🏠 חזור לדף הבית</a> | <a href="../class5/class5.html">📖 שיעור קודם</a> | <strong>שיעור הבא:</strong> בהכנה</p>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -523,7 +457,7 @@ eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwt
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../class4";
+window._ojs.paths.runtimeToDoc = "../../class6";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
 window._ojs.selfContained = false;
@@ -930,7 +864,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 
