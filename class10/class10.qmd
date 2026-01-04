@@ -1,7 +1,7 @@
 ---
 title: "שיעור 10: צירופים + מקורות מידע"
 author: 'ד"ר עדו קליין'
-date: 01/13/2025
+date: 01/04/2026
 execute:
   echo: false
   warning: false
