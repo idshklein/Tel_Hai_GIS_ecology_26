@@ -274,6 +274,7 @@ a {
     direction: rtl;
     margin: auto;
     border-collapse: collapse;
+    font-size: 0.7em;
 }
 
 .reveal table th,

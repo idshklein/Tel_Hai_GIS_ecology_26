@@ -30,6 +30,8 @@ website:
         text: "שיעור 9"
       - href: class10/class10.qmd
         text: "שיעור 10"
+      - href: class11/class11.qmd
+        text: "שיעור 11"
   sidebar:
     title: "תכנית הלימודים"
     style: "floating"
@@ -47,6 +49,7 @@ website:
           - class8/class8.qmd
           - class9/class9.qmd
           - class10/class10.qmd
+          - class11/class11.qmd
 
 format:
   html:
