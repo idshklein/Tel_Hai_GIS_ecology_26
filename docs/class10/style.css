@@ -12,3 +12,7 @@ ul {
     text-align: left;
     direction: ltr;   
 }
+
+.reveal table {
+    font-size: 0.7em;
+}
